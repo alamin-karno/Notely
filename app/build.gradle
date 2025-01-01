@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id 'kotlin-kapt'
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.navigation.safe.args)
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -31,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -55,7 +62,7 @@ dependencies {
     // room database
     implementation libs.room.runtime
     implementation libs.room.ktx
-    kapt libs.room.compiler
+    ksp libs.room.compiler
     // fragment ktx
     implementation libs.fragment.ktx
     // lottie animation
