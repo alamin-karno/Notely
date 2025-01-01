@@ -1,10 +1,14 @@
-package com.alaminkarno.notely
+package com.alaminkarno.notely.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.alaminkarno.notely.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +20,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, ContainerActivity::class.java))
+            finish()
+        }, 3000)
     }
 }
