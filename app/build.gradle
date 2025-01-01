@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id 'kotlin-kapt'
 }
 
 android {
@@ -47,14 +48,14 @@ dependencies {
     implementation libs.lifecycle.viewmodel.ktx
     implementation libs.lifecycle.livedata.ktx
     // annotation processor
-    kpt libs.lifecycle.compiler
+    kapt libs.lifecycle.compiler
     // navigation
     implementation libs.navigation.fragment.ktx
     implementation libs.navigation.ui.ktx
     // room database
     implementation libs.room.runtime
     implementation libs.room.ktx
-    kpt libs.room.compiler
+    kapt libs.room.compiler
     // fragment ktx
     implementation libs.fragment.ktx
     // lottie animation
