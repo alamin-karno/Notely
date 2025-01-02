@@ -14,7 +14,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>
     private var noteList = listOf<Note>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setContentList(noteList: List<Note>) {
+    fun setNoteList(noteList: List<Note>) {
         this.noteList = noteList
         notifyDataSetChanged()
     }

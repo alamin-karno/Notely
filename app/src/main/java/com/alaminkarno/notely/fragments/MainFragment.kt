@@ -5,15 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
 import com.alaminkarno.notely.R
+import com.alaminkarno.notely.adapters.RecyclerAdapter
+import com.alaminkarno.notely.viewmodel.NoteViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainFragment : Fragment() {
 
-    lateinit var controller : NavController
+    private lateinit var controller : NavController
+    private lateinit var viewModel: NoteViewModel
+    private var adapter = RecyclerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +29,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        viewModel = ViewModelProvider(this)[NoteViewModel::class.java]
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -31,11 +37,19 @@ class MainFragment : Fragment() {
         controller = Navigation.findNavController(view)
 
         val button = view.findViewById<FloatingActionButton>(R.id.add_note_fav_button)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.notes_recyclerView)
 
         button.setOnClickListener {
             controller.navigate(R.id.action_mainFragment_to_addFragment)
         }
 
+        context?.let { viewModel.getAllNotes(it) }
+        viewModel.notes.observe(viewLifecycleOwner) {
+            adapter.setNoteList(it)
+            recyclerView.also { recycler ->
+                recycler.adapter = adapter
+            }
+        }
     }
 
 }
