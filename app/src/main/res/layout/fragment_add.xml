@@ -11,18 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_500"
-        app:title="Add">
-
-        <ImageView
-            android:id="@+id/save_note_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/save"
-            android:src="@drawable/baseline_check_24" />
-
-    </androidx.appcompat.widget.Toolbar>
+        app:title="Add Note"/>
 
     <EditText
         android:id="@+id/add_note_title"
@@ -47,7 +36,7 @@
         android:textSize="15sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_note_fav_button"
+        android:id="@+id/save_note_nav_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -55,6 +44,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="40dp"
         android:contentDescription="@string/add_note"
-        android:src="@drawable/baseline_add_24" />
+        android:src="@drawable/baseline_check_24" />
 
 </RelativeLayout>
