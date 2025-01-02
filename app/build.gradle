@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace 'com.alaminkarno.notely'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.alaminkarno.notely"
         minSdk 24
-        targetSdk 34
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
@@ -54,17 +54,22 @@ dependencies {
     // viewmodel and livedata
     implementation libs.lifecycle.viewmodel.ktx
     implementation libs.lifecycle.livedata.ktx
+
     // annotation processor
     kapt libs.lifecycle.compiler
+
     // navigation
     implementation libs.navigation.fragment.ktx
     implementation libs.navigation.ui.ktx
+
     // room database
     implementation libs.room.runtime
     implementation libs.room.ktx
     ksp libs.room.compiler
+
     // fragment ktx
     implementation libs.fragment.ktx
+
     // lottie animation
     implementation libs.lottie
 }
